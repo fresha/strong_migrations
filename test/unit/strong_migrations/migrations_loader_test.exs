@@ -3,6 +3,12 @@ defmodule StrongMigrations.MigrationsLoaderTest do
 
   alias StrongMigrations.MigrationsLoader
 
+  setup_all do
+    Application.put_env(:strong_migrations, :migration_paths, [
+      "test/fixtures/migrations"
+    ])
+  end
+
   test "load empty list of migrations when directory is empty" do
     assert [] == MigrationsLoader.load(["test/fixtures/no_migrations"])
   end
