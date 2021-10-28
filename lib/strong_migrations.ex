@@ -5,10 +5,13 @@ defmodule StrongMigrations do
 
   alias StrongMigrations.Loader
   alias StrongMigrations.Parser
+  alias StrongMigrations.ReasonsTranslator
   alias StrongMigrations.Validator
 
   @type migration_path() :: String.t()
   @type migration_file() :: String.t()
+  @type validation_result() :: {migration_file(), [atom()]}
+  @type reason() :: String.t()
 
   @doc """
   Starts analyze of the application's migrations.
@@ -25,7 +28,6 @@ defmodule StrongMigrations do
     |> Loader.load()
     |> Parser.parse()
     |> Validator.validate()
-
-    :safe
+    |> ReasonsTranslator.translate()
   end
 end

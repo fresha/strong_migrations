@@ -11,7 +11,11 @@ defmodule Mix.Tasks.StrongMigrations.Migrate do
   def run(args) do
     case StrongMigrations.analyze() do
       :safe -> Mix.Task.run("ecto.migrate", args)
-      :unsafe -> :ok
+      {:unsafe, reasons} -> handle_reasons(reasons)
     end
+  end
+
+  defp handle_reasons(reasons) do
+    Enum.map(reasons, fn reason -> IO.warn(reason) end)
   end
 end

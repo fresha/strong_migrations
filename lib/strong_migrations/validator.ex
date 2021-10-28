@@ -5,9 +5,11 @@ defmodule StrongMigrations.Validator do
 
   alias StrongMigrations.Migration
 
-  @spec validate([Migration.t()]) :: :ok
+  @spec validate([Migration.t()]) :: [StrongMigrations.validation_result()]
   def validate(migrations) do
-    Enum.map(migrations, &apply_classifiers(&1, classifiers()))
+    Enum.map(migrations, fn migration ->
+      {migration.file_path, apply_classifiers(migration, classifiers())}
+    end)
   end
 
   defp apply_classifiers(migration, classifiers) do
