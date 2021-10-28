@@ -9,10 +9,10 @@ defmodule StrongMigrations do
   ## Examples
 
       iex> StrongMigrations.analyze()
-      :ok
+      :safe
 
   """
   def analyze do
-    :ok
+    :safe
   end
 end
