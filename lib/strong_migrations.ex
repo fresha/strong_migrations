@@ -12,6 +12,7 @@ defmodule StrongMigrations do
       :safe
 
   """
+  @spec analyze() :: :safe | :unsafe
   def analyze do
     :safe
   end

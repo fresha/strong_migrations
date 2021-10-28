@@ -11,11 +11,7 @@ defmodule Mix.Tasks.StrongMigrations.Migrate do
   def run(args) do
     case StrongMigrations.analyze() do
       :safe -> Mix.Task.run("ecto.migrate", args)
-      {:unsafe, warnings} -> handle_warnings(warnings)
+      :unsafe -> :ok
     end
-  end
-
-  defp handle_warnings(_warnings) do
-    :ok
   end
 end
