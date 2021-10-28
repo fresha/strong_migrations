@@ -1,4 +1,4 @@
-defmodule StrongMigrations.MigrationsLoader do
+defmodule StrongMigrations.Loader do
   @moduledoc """
   Loads migration files from a given paths
   """
@@ -6,7 +6,7 @@ defmodule StrongMigrations.MigrationsLoader do
   @doc """
   Returns a list of migration files in specified paths (`:migration_paths`).
   """
-  @spec load([StrongMigrations.migration_path()]) :: [StrongMigrations.migration_path()]
+  @spec load([StrongMigrations.migration_path()]) :: [StrongMigrations.migration_file()]
   def load(paths) do
     paths
     |> get_migration_paths()

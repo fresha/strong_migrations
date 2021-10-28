@@ -3,9 +3,12 @@ defmodule StrongMigrations do
   Documentation for `StrongMigrations`.
   """
 
-  alias StrongMigrations.MigrationsLoader
+  alias StrongMigrations.Loader
+  alias StrongMigrations.Parser
+  alias StrongMigrations.Validator
 
   @type migration_path() :: String.t()
+  @type migration_file() :: String.t()
 
   @doc """
   Starts analyze of the application's migrations.
@@ -18,7 +21,10 @@ defmodule StrongMigrations do
   """
   @spec analyze([migration_path()]) :: :safe | :unsafe
   def analyze(migration_paths \\ []) do
-    MigrationsLoader.load(migration_paths)
+    migration_paths
+    |> Loader.load()
+    |> Parser.parse()
+    |> Validator.validate()
 
     :safe
   end

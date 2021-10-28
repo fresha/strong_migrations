@@ -1,3 +1,6 @@
+# These migrations are just for testing purposes
+/priv/repo/migrations
+
 # The directory Mix will write compiled artifacts to.
 /_build/
 
