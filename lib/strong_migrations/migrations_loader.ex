@@ -12,7 +12,6 @@ defmodule StrongMigrations.MigrationsLoader do
     |> get_migration_paths()
     |> Enum.flat_map(fn path ->
       path
-      |> Path.join("**")
       |> Path.join("*.exs")
       |> Path.wildcard()
       |> Enum.uniq()
