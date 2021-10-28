@@ -13,6 +13,7 @@ defmodule StrongMigrations.MixProject do
       deps: deps(),
       package: package(),
       docs: docs(),
+      elixirc_paths: elixirc_paths(Mix.env()),
       dialyzer: [
         plt_add_deps: :apps_direct,
         plt_add_apps: [:mix],
@@ -20,6 +21,9 @@ defmodule StrongMigrations.MixProject do
       ]
     ]
   end
+
+  defp elixirc_paths(:test), do: ["lib", "test/test_double"]
+  defp elixirc_paths(_), do: ["lib"]
 
   def application do
     [
