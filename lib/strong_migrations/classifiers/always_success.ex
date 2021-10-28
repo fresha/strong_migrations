@@ -1,4 +1,6 @@
 defmodule StrongMigrations.Classifiers.AlwaysSuccess do
+  @moduledoc false
+
   alias StrongMigrations.Classifier
 
   @behaviour Classifier
