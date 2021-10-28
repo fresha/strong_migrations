@@ -5,6 +5,6 @@ config :strong_migrations,
     "priv/repo/migrations"
   ],
   classifiers: [
-    StrongMigrations.Classifiers.AddIndexConcurrentlyInTransaction
+    StrongMigrations.Classifiers.AddIndexConcurrentlyInTransaction,
     StrongMigrations.Classifiers.DropIndexConcurrentlyInTransaction
   ]
