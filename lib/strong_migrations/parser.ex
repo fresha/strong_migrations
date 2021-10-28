@@ -27,6 +27,8 @@ defmodule StrongMigrations.Parser do
     parse_body(body, Migration.new(file_path))
   end
 
+  defp analyze_code({file_path, _}), do: Migration.new(file_path)
+
   defp parse_body([{:use, _, _} | tail], acc), do: parse_body(tail, acc)
 
   defp parse_body([{:@, _, [{:safety_assured, _, [operations]}]} | tail], acc) do

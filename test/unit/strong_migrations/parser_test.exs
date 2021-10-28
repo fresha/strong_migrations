@@ -1,11 +1,39 @@
 defmodule StrongMigrations.ParserTest do
   use ExUnit.Case, async: true
 
+  alias StrongMigrations.Migration
   alias StrongMigrations.Parser
 
-  setup_all do
-    Application.put_env(:strong_migrations, :migration_paths, [
-      "test/fixtures/migrations"
-    ])
+  test "parsing empty file means nothing should be found" do
+    file_path = fixtures("empty.exs")
+
+    assert [Migration.new(file_path)] ==
+             Parser.parse([
+               file_path
+             ])
+  end
+
+  describe ":disable_ddl_transaction seeking" do
+    test "should find :disable_ddl_transaction option when enabled" do
+      [migration] =
+        Parser.parse([
+          fixtures("disable_ddl_transaction_true.exs")
+        ])
+
+      assert migration.disable_ddl_transaction == true
+    end
+
+    test "should not find :disable_ddl_transaction option when disabled" do
+      [migration] =
+        Parser.parse([
+          fixtures("disable_ddl_transaction_false.exs")
+        ])
+
+      assert migration.disable_ddl_transaction == false
+    end
+  end
+
+  defp fixtures(migration) do
+    "test/fixtures/parser/#{migration}"
   end
 end
