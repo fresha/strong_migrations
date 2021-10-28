@@ -33,6 +33,26 @@ defmodule StrongMigrations.ParserTest do
     end
   end
 
+  describe ":disable_migration_lock seeking" do
+    test "should find :disable_migration_lock option when enabled" do
+      [migration] =
+        Parser.parse([
+          fixtures("disable_migration_lock_true.exs")
+        ])
+
+      assert migration.disable_migration_lock == true
+    end
+
+    test "should not find :disable_migration_lock option when disabled" do
+      [migration] =
+        Parser.parse([
+          fixtures("disable_migration_lock_false.exs")
+        ])
+
+      assert migration.disable_migration_lock == false
+    end
+  end
+
   defp fixtures(migration) do
     "test/fixtures/parser/#{migration}"
   end

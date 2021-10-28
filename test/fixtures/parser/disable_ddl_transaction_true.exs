@@ -1,4 +1,4 @@
-defmodule DisableDdlTransaction do
+defmodule DisableDdlTransactionTrue do
   @moduledoc false
 
   use Ecto.Migration
