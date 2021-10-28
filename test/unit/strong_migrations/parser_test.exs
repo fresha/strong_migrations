@@ -53,6 +53,24 @@ defmodule StrongMigrations.ParserTest do
     end
   end
 
+  test "should find :create_index option" do
+    [migration] =
+      Parser.parse([
+        fixtures("create_index.exs")
+      ])
+
+    assert migration.create_index == true
+  end
+
+  test "should find :create_index_concurrently option" do
+    [migration] =
+      Parser.parse([
+        fixtures("create_index_concurrently.exs")
+      ])
+
+    assert migration.create_index_concurrently == true
+  end
+
   defp fixtures(migration) do
     "test/fixtures/parser/#{migration}"
   end
