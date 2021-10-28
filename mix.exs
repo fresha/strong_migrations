@@ -11,6 +11,7 @@ defmodule StrongMigrations.MixProject do
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      package: package(),
       docs: docs(),
       dialyzer: [
         plt_add_deps: :apps_direct,
@@ -45,6 +46,17 @@ defmodule StrongMigrations.MixProject do
       source_url: @source_url,
       source_ref: "v#{@version}",
       formatters: ["html"]
+    ]
+  end
+
+  defp package() do
+    [
+      files: ~w(lib .formatter.exs mix.exs README*),
+      licenses: ["MIT"],
+      links: %{
+        "Changelog" => "#{@source_url}/commits/master",
+        "GitHub" => @source_url
+      }
     ]
   end
 end
