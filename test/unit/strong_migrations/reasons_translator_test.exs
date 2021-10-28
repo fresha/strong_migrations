@@ -13,7 +13,7 @@ defmodule StrongMigrations.ReasonsTranslatorTest do
 
   test "translates unsafe when migrations with reasons specified" do
     to_translate = [
-      {"migration.exs", [:i_like_trains, :elixir_is_cool]}
+      {"do_something.exs", [:i_like_trains, :elixir_is_cool]}
     ]
 
     {status, reasons} = ReasonsTranslator.translate(to_translate)
@@ -21,8 +21,8 @@ defmodule StrongMigrations.ReasonsTranslatorTest do
     assert :unsafe == status
 
     assert [
-             "Migration migration.exs is not safe! Reason: i like trains",
-             "Migration migration.exs is not safe! Reason: elixir is cool"
+             "Migration do_something.exs is not safe! Reason: i like trains",
+             "Migration do_something.exs is not safe! Reason: elixir is cool"
            ] == reasons
   end
 end
