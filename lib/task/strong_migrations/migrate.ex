@@ -6,7 +6,7 @@ defmodule Mix.Tasks.StrongMigrations.Migrate do
 
   use Mix.Task
 
-  def run(_command_line_args) do
-    Mix.Task.run("ecto.migrate")
+  def run(args) do
+    Mix.Task.run("ecto.migrate", args)
   end
 end
