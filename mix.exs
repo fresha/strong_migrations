@@ -39,7 +39,7 @@ defmodule StrongMigrations.MixProject do
     [
       extras: [
         # "HOW_TO_RELEASE.md": [title: "How to Release"],
-        # "LICENSE.md": [title: "License"],
+        "LICENSE.md": [title: "License"],
         "README.md": [title: "Overview"]
       ],
       main: "readme",
