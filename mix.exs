@@ -38,7 +38,7 @@ defmodule StrongMigrations.MixProject do
   defp docs do
     [
       extras: [
-        # "HOW_TO_RELEASE.md": [title: "How to Release"],
+        "HOW_TO_RELEASE.md": [title: "How to Release"],
         "LICENSE.md": [title: "License"],
         "README.md": [title: "Overview"]
       ],
