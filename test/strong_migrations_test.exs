@@ -2,7 +2,7 @@ defmodule StrongMigrationsTest do
   use ExUnit.Case
   doctest StrongMigrations
 
-  test "greets the world" do
-    assert StrongMigrations.hello() == :world
+  test "project has been analyzed successfully" do
+    assert StrongMigrations.analyze() == :ok
   end
 end

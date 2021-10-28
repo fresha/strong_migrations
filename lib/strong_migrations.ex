@@ -4,15 +4,15 @@ defmodule StrongMigrations do
   """
 
   @doc """
-  Hello world.
+  Starts analyze of the application's migrations.
 
   ## Examples
 
-      iex> StrongMigrations.hello()
-      :world
+      iex> StrongMigrations.analyze()
+      :ok
 
   """
-  def hello do
-    :world
+  def analyze do
+    :ok
   end
 end
