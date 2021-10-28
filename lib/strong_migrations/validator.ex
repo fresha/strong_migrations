@@ -7,11 +7,7 @@ defmodule StrongMigrations.Validator do
 
   @spec validate([Migration.t()]) :: :ok
   def validate(migrations) do
-    Enum.map(migrations, &apply_classifiers(&1, load_classifiers()))
-  end
-
-  defp load_classifiers do
-    Application.fetch_env!(:strong_migrations, :classifiers)
+    Enum.map(migrations, &apply_classifiers(&1, classifiers()))
   end
 
   defp apply_classifiers(migration, classifiers) do
@@ -21,5 +17,9 @@ defmodule StrongMigrations.Validator do
         {:error, error} -> acc ++ [error]
       end
     end)
+  end
+
+  defp classifiers do
+    Application.fetch_env!(:strong_migrations, :classifiers)
   end
 end
