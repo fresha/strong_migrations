@@ -71,6 +71,24 @@ defmodule StrongMigrations.ParserTest do
     assert migration.create_index_concurrently == true
   end
 
+  test "should find :drop_index option" do
+    [migration] =
+      Parser.parse([
+        fixtures("drop_index.exs")
+      ])
+
+    assert migration.drop_index == true
+  end
+
+  test "should find :drop_index_concurrently option" do
+    [migration] =
+      Parser.parse([
+        fixtures("drop_index_concurrently.exs")
+      ])
+
+    assert migration.drop_index_concurrently == true
+  end
+
   defp fixtures(migration) do
     "test/fixtures/parser/#{migration}"
   end
