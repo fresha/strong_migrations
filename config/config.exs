@@ -6,4 +6,5 @@ config :strong_migrations,
   ],
   classifiers: [
     StrongMigrations.Classifiers.AddIndexConcurrentlyInTransaction
+    StrongMigrations.Classifiers.DropIndexConcurrentlyInTransaction
   ]
