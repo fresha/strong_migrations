@@ -7,6 +7,7 @@ defmodule StrongMigrations.MixProject do
   def project do
     [
       app: :strong_migrations,
+      description: "Catch unsafe migrations in your Elixir application",
       version: "0.1.0",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
