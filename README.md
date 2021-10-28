@@ -7,22 +7,28 @@
 [![License](https://img.shields.io/hexpm/l/strong_migrations.svg)](https://github.com/patrykwozinski/strong_migrations/blob/master/LICENSE.md)
 [![Last Updated](https://img.shields.io/github/last-commit/patrykwozinski/strong_migrations.svg)](https://github.com/patrykwozinski/strong_migrations/commits/master)
 
-**Catch unsafe migrations in your Elixir applications**
+**Catch unsafe migrations in your Elixir application**
 
-## Installation
+## Table of Contents
+* [What Is it?](#what-is-it)
+* [How to Install?](#how-to-install)
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `strong_migrations` to your list of dependencies in `mix.exs`:
+## What is it
+`strong_migrations` is a library that protects your application from invoking unsafe migrations, they needs to be marked as a safe.
 
+#### Features
+- checking if your migrations are adding an index concurrently in transaction
+- checking if your migrations are removing an index concurrently in transaction
+... tbd
+
+## How to install
+The package can be installed by adding `strong_migrations` to your list of dependencies in `mix.exs` as follows.
+
+Update your `mix.exs`:
 ```elixir
 def deps do
   [
-    {:strong_migrations, "~> 0.1.0"}
+    {:strong_migrations, "~> 0.1", only: :dev}
   ]
 end
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/strong_migrations](https://hexdocs.pm/strong_migrations).
-
