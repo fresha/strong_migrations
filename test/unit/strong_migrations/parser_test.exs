@@ -188,6 +188,28 @@ defmodule StrongMigrations.ParserTest do
     assert migration.drop_table == true
   end
 
+  describe "mixed operations in single migration" do
+    test "should find :drop_table and :remove_column in a single migration" do
+      [migration] =
+        Parser.parse([
+          fixtures("drop_table_and_remove_column.exs")
+        ])
+
+      assert migration.drop_table == true
+      assert migration.remove_column == true
+    end
+
+    test "should find :drop_table and :remove_column in a single migration with if exist" do
+      [migration] =
+        Parser.parse([
+          fixtures("drop_table_and_remove_column_if_exist.exs")
+        ])
+
+      assert migration.drop_table == true
+      assert migration.remove_column == true
+    end
+  end
+
   defp fixtures(migration) do
     "test/fixtures/parser/#{migration}"
   end
