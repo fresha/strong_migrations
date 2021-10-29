@@ -10,8 +10,8 @@
 **Catch unsafe migrations in your Elixir application**
 
 ## Table of Contents
-* [What Is it?](#what-is-it)
-* [How to Install?](#how-to-install)
+* [What is it?](#what-is-it)
+* [How to install?](#how-to-install)
 * [How to configure?](#how-to-configure)
 
 ## What is it
