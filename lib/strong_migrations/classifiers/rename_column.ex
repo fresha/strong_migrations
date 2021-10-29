@@ -1,4 +1,4 @@
-defmodule StrongMigrations.Classifiers.RenameColumnIsNotSafe do
+defmodule StrongMigrations.Classifiers.RenameColumn do
   @moduledoc false
 
   alias StrongMigrations.Classifier

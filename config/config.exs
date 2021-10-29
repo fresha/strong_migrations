@@ -6,5 +6,6 @@ config :strong_migrations,
   ],
   classifiers: [
     StrongMigrations.Classifiers.AddIndexConcurrentlyInTransaction,
-    StrongMigrations.Classifiers.DropIndexConcurrentlyInTransaction
+    StrongMigrations.Classifiers.DropIndexConcurrentlyInTransaction,
+    StrongMigrations.Classifiers.RenameColumn
   ]

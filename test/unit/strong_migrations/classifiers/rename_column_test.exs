@@ -1,18 +1,18 @@
-defmodule StrongMigrations.Classifiers.RenameColumnIsNotSafeTest do
+defmodule StrongMigrations.Classifiers.RenameColumnTest do
   use ExUnit.Case, async: true
 
-  alias StrongMigrations.Classifiers.RenameColumnIsNotSafe
+  alias StrongMigrations.Classifiers.RenameColumn
   alias StrongMigrations.Migration
 
   test "it has failed when trying to rename a column" do
     migration = %{Migration.new("test.exs") | rename_column: true}
 
-    assert {:error, :rename_column_is_not_safe} == RenameColumnIsNotSafe.classify(migration)
+    assert {:error, :rename_column_is_not_safe} == RenameColumn.classify(migration)
   end
 
   test "it has passed when not removing a column" do
     migration = %{Migration.new("test.exs") | rename_column: false}
 
-    assert :ok == RenameColumnIsNotSafe.classify(migration)
+    assert :ok == RenameColumn.classify(migration)
   end
 end
