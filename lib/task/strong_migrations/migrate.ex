@@ -5,6 +5,7 @@ defmodule Mix.Tasks.StrongMigrations.Migrate do
   """
 
   use Mix.Task
+  require Logger
 
   alias StrongMigrations
 
@@ -16,6 +17,8 @@ defmodule Mix.Tasks.StrongMigrations.Migrate do
   end
 
   defp handle_reasons(reasons) do
-    Enum.map(reasons, fn reason -> IO.warn(reason) end)
+    Enum.map(reasons, fn reason -> Logger.warn(reason) end)
+
+    Logger.error("Found #{length(reasons)} unsafe migrations!")
   end
 end

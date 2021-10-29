@@ -17,7 +17,10 @@ defmodule StrongMigrations.ReasonsTranslator do
 
   defp to_human_readable({migration, reasons}) do
     Enum.map(reasons, fn reason ->
-      "Migration #{migration} is not safe! Reason: #{readable_reason(reason)}"
+      """
+      Unsafe migration! Reason: #{readable_reason(reason)}
+      File: #{migration}
+      """
     end)
   end
 

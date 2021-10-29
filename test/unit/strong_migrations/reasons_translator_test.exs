@@ -21,8 +21,8 @@ defmodule StrongMigrations.ReasonsTranslatorTest do
     assert :unsafe == status
 
     assert [
-             "Migration do_something.exs is not safe! Reason: i like trains",
-             "Migration do_something.exs is not safe! Reason: elixir is cool"
+             "Unsafe migration! Reason: i like trains\nFile: do_something.exs\n",
+             "Unsafe migration! Reason: elixir is cool\nFile: do_something.exs\n"
            ] == reasons
   end
 end
