@@ -22,6 +22,7 @@
 - checking if your migrations are removing an index concurrently in transaction
 - checking if your migrations are renaming columns (it's always better to remove old and add new column)
 - checking if your migrations are removing columns
+- checking if your migrations are removing tables
 - you can keep safety assured info when adding `@safety_assured [:drop_column, :drop_table, :rename_column]`, etc if something has safety assured
 ... tbd
 
