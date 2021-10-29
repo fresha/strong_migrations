@@ -13,6 +13,7 @@
 * [What is it?](#what-is-it)
 * [How to install?](#how-to-install)
 * [How to configure?](#how-to-configure)
+* [Similar packages](#similar-packages)
 
 ## What is it
 `strong_migrations` is a library that protects your application from invoking unsafe migrations, they needs to be marked as a safe.
@@ -66,3 +67,6 @@ config :strong_migrations,
     "my/fancy/path/to/migrations"
   ],
 ```
+
+## Similar Packages
+* https://github.com/ankane/strong_migrations (Ruby)
