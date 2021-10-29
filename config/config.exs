@@ -8,6 +8,7 @@ config :strong_migrations,
     StrongMigrations.Classifiers.AddIndexConcurrentlyInTransaction,
     StrongMigrations.Classifiers.AddIndexNotConcurrently,
     StrongMigrations.Classifiers.DropIndexConcurrentlyInTransaction,
+    StrongMigrations.Classifiers.DropTable,
     StrongMigrations.Classifiers.RemoveColumn,
     StrongMigrations.Classifiers.RenameColumn
   ]
