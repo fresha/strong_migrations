@@ -40,13 +40,13 @@ Update your `mix.exs`:
 ```elixir
 def deps do
   [
-    {:strong_migrations, "~> 0.1", only: :dev}
+    {:strong_migrations, "~> 0.1"}
   ]
 end
 ```
 
 ## How to configure
-If you want to specify which classifiers you want to use, please add to your `config/dev.exs` folowwing lines
+If you want to specify which classifiers you want to use, please add to your `config.exs` folowwing lines
 ```elixir
 config :strong_migrations,
   classifiers: [
@@ -59,7 +59,7 @@ config :strong_migrations,
   ]
 ```
 
-If you want to specify migration paths available in your project (not default -> `priv/repo/migrations`), please add to your `config/dev.exs` following lines
+If you want to specify migration paths available in your project (not default -> `priv/repo/migrations`), please add to your `config.exs` following lines
 ```elixir
 config :strong_migrations,
   migration_paths: [
