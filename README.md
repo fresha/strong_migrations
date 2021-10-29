@@ -20,6 +20,8 @@
 2. If migrations are unsafe -> print errors.
 3. If migrations are safe -> use `ecto.migrate`.
 
+![](asset/img/example.png)
+
 #### Features
 - checking if your migrations are adding an index concurrently in transaction
 - checking if your migrations are adding an index but not concurrently
@@ -31,7 +33,7 @@
 ... tbd
 
 ## How to install
-The package can be installed by adding `strong_migrations` to your list of dependencies in `mix.exs` as follows.
+The package can be installed by adding `strong_migrations` to your list of dependencies in `mix.exs` as follows. Also, it's worth adding an alias like: `ecto.migrate -> strong_migrations.migrate` and thanks to that you'll be sure that all migrations were checked before running.
 
 Update your `mix.exs`:
 ```elixir
