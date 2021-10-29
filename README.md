@@ -16,6 +16,9 @@
 
 ## What is it
 `strong_migrations` is a library that protects your application from invoking unsafe migrations, they needs to be marked as a safe.
+1. Analyze migrations if they are safe.
+2. If migrations are unsafe -> print errors.
+3. If migrations are safe -> use `ecto.migrate`.
 
 #### Features
 - checking if your migrations are adding an index concurrently in transaction
