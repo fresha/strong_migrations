@@ -62,10 +62,28 @@ defmodule StrongMigrations.ParserTest do
     assert migration.create_index == true
   end
 
+  test "should find :create_index option when unique_index used" do
+    [migration] =
+      Parser.parse([
+        fixtures("create_unique_index.exs")
+      ])
+
+    assert migration.create_index == true
+  end
+
   test "should find :create_index_concurrently option" do
     [migration] =
       Parser.parse([
         fixtures("create_index_concurrently.exs")
+      ])
+
+    assert migration.create_index_concurrently == true
+  end
+
+  test "should find :create_index_concurrently option for unique_index" do
+    [migration] =
+      Parser.parse([
+        fixtures("create_unique_index_concurrently.exs")
       ])
 
     assert migration.create_index_concurrently == true

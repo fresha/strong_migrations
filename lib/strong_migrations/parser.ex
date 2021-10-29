@@ -51,7 +51,24 @@ defmodule StrongMigrations.Parser do
   end
 
   defp parse_body(
+         [
+           {:def, _, [_, [do: {:create, _, [{:unique_index, _, [_, _, [concurrently: true]]}]}]]}
+           | tail
+         ],
+         acc
+       ) do
+    parse_body(tail, %{acc | create_index_concurrently: true})
+  end
+
+  defp parse_body(
          [{:def, _, [_, [do: {:create, _, [{:index, _, [_, _, opts]}]}]]} | tail],
+         acc
+       ) do
+    parse_body(tail, %{acc | create_index_concurrently: Keyword.get(opts, :concurrently, false)})
+  end
+
+  defp parse_body(
+         [{:def, _, [_, [do: {:create, _, [{:unique_index, _, [_, _, opts]}]}]]} | tail],
          acc
        ) do
     parse_body(tail, %{acc | create_index_concurrently: Keyword.get(opts, :concurrently, false)})
@@ -65,6 +82,10 @@ defmodule StrongMigrations.Parser do
   end
 
   defp parse_body([{:def, _, [_, [do: {:create, _, [{:index, _, _}]}]]} | tail], acc) do
+    parse_body(tail, %{acc | create_index: true})
+  end
+
+  defp parse_body([{:def, _, [_, [do: {:create, _, [{:unique_index, _, _}]}]]} | tail], acc) do
     parse_body(tail, %{acc | create_index: true})
   end
 
@@ -124,7 +145,18 @@ defmodule StrongMigrations.Parser do
     parse_complex_body(tail, %{acc | create_index_concurrently: true})
   end
 
+  defp parse_complex_body(
+         [{:create, _, [{:unique_index, _, [_, _, [concurrently: true]]}]} | tail],
+         acc
+       ) do
+    parse_complex_body(tail, %{acc | create_index_concurrently: true})
+  end
+
   defp parse_complex_body([{:create, _, [{:index, _, [_, _]}]} | tail], acc) do
+    parse_complex_body(tail, %{acc | create_index: true})
+  end
+
+  defp parse_complex_body([{:create, _, [{:unique_index, _, [_, _]}]} | tail], acc) do
     parse_complex_body(tail, %{acc | create_index: true})
   end
 
