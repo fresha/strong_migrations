@@ -65,6 +65,14 @@ defmodule StrongMigrations.Parser do
     parse_body(tail, %{acc | drop_index: true})
   end
 
+  defp parse_body([{:def, _, [_, [do: {:drop, _, [{:table, _, _}]}]]} | tail], acc) do
+    parse_body(tail, %{acc | drop_table: true})
+  end
+
+  defp parse_body([{:def, _, [_, [do: {:drop_if_exists, _, [{:table, _, _}]}]]} | tail], acc) do
+    parse_body(tail, %{acc | drop_table: true})
+  end
+
   defp parse_body(
          [
            {:def, _,
@@ -140,6 +148,14 @@ defmodule StrongMigrations.Parser do
 
   defp parse_complex_body([{:remove_if_exists, _, [_column]} | tail], acc) do
     parse_complex_body(tail, %{acc | remove_column: true})
+  end
+
+  defp parse_complex_body([{:drop, _, [{:table, _, _table_name}]} | tail], acc) do
+    parse_complex_body(tail, %{acc | drop_table: true})
+  end
+
+  defp parse_complex_body([{:drop_if_exists, _, [{:table, _, _table_name}]} | tail], acc) do
+    parse_complex_body(tail, %{acc | drop_table: true})
   end
 
   defp parse_complex_body([_head | tail], acc), do: parse_complex_body(tail, acc)

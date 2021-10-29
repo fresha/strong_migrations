@@ -143,6 +143,42 @@ defmodule StrongMigrations.ParserTest do
     assert migration.remove_column == true
   end
 
+  test "should find :drop_table option" do
+    [migration] =
+      Parser.parse([
+        fixtures("drop_table.exs")
+      ])
+
+    assert migration.drop_table == true
+  end
+
+  test "should find :drop_table for _if_exists option " do
+    [migration] =
+      Parser.parse([
+        fixtures("drop_table_if_exists.exs")
+      ])
+
+    assert migration.drop_table == true
+  end
+
+  test "should find :drop_table option when two columns to change" do
+    [migration] =
+      Parser.parse([
+        fixtures("drop_two_tables.exs")
+      ])
+
+    assert migration.drop_table == true
+  end
+
+  test "should find :drop_table option for _if_exists when two columns to change" do
+    [migration] =
+      Parser.parse([
+        fixtures("drop_two_tables_if_exists.exs")
+      ])
+
+    assert migration.drop_table == true
+  end
+
   defp fixtures(migration) do
     "test/fixtures/parser/#{migration}"
   end
