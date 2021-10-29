@@ -10,6 +10,12 @@ defmodule StrongMigrations.Classifiers.AddIndexNotConcurrentlyTest do
     assert {:error, :add_index_not_concurrently} == AddIndexNotConcurrently.classify(migration)
   end
 
+  test "it has passed when creating an index not concurrently but it's safety assured" do
+    migration = %{Migration.new("test.exs") | create_index: true, safety_assured: [:create_index]}
+
+    assert :ok == AddIndexNotConcurrently.classify(migration)
+  end
+
   test "it has passed when not creating an index" do
     migration = %{Migration.new("test.exs") | create_index: false}
 
