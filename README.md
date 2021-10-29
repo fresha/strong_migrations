@@ -57,7 +57,7 @@ If you want to specify migration paths available in your project (not default ->
 ```elixir
 config :strong_migrations,
   migration_paths: [
-    "priv/repo/migrations"
+    "priv/repo/migrations",
     "my/fancy/path/to/migrations"
   ],
 ```
