@@ -56,7 +56,7 @@ config :strong_migrations,
   ]
 ```
 
-If you want to specify migration paths available in your project (not default -> `priv/repo/migrations`), please add to your `config.exs` following lines
+If you want to specify migration paths available in your project (not default -> `priv/repo/migrations`), please add to your `config/dev.exs` following lines
 ```elixir
 config :strong_migrations,
   migration_paths: [
