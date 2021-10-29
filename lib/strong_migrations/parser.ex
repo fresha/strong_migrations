@@ -76,6 +76,23 @@ defmodule StrongMigrations.Parser do
     parse_body(tail, %{acc | rename_column: true})
   end
 
+  defp parse_body(
+         [
+           {:def, _, [_, [do: {:alter, _, [{:table, _, _}, [do: {:__block__, _, opts}]]}]]} | tail
+         ],
+         acc
+       ) do
+    acc = parse_complex_body(opts, acc)
+
+    parse_body(tail, acc)
+  end
+
+  defp parse_body([{:def, _, [_, [do: {:alter, _, opts}]]} | tail], acc) do
+    acc = parse_complex_body(opts, acc)
+
+    parse_body(tail, acc)
+  end
+
   defp parse_body([{:def, _, [_, [do: {:__block__, _, opts}]]} | tail], acc) do
     acc = parse_complex_body(opts, acc)
 
@@ -107,6 +124,22 @@ defmodule StrongMigrations.Parser do
          acc
        ) do
     parse_complex_body(tail, %{acc | rename_column: true})
+  end
+
+  defp parse_complex_body([[do: {:remove, _, [_column]}] | tail], acc) do
+    parse_complex_body(tail, %{acc | remove_column: true})
+  end
+
+  defp parse_complex_body([[do: {:remove_if_exists, _, [_column]}] | tail], acc) do
+    parse_complex_body(tail, %{acc | remove_column: true})
+  end
+
+  defp parse_complex_body([{:remove, _, [_column]} | tail], acc) do
+    parse_complex_body(tail, %{acc | remove_column: true})
+  end
+
+  defp parse_complex_body([{:remove_if_exists, _, [_column]} | tail], acc) do
+    parse_complex_body(tail, %{acc | remove_column: true})
   end
 
   defp parse_complex_body([_head | tail], acc), do: parse_complex_body(tail, acc)

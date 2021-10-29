@@ -107,6 +107,42 @@ defmodule StrongMigrations.ParserTest do
     assert migration.rename_column == true
   end
 
+  test "should find :remove_column option" do
+    [migration] =
+      Parser.parse([
+        fixtures("remove_column.exs")
+      ])
+
+    assert migration.remove_column == true
+  end
+
+  test "should find :remove_column for _if_exists option " do
+    [migration] =
+      Parser.parse([
+        fixtures("remove_column_if_exists.exs")
+      ])
+
+    assert migration.remove_column == true
+  end
+
+  test "should find :remove_column option when two columns to change" do
+    [migration] =
+      Parser.parse([
+        fixtures("remove_two_columns.exs")
+      ])
+
+    assert migration.remove_column == true
+  end
+
+  test "should find :remove_column option for _if_exists when two columns to change" do
+    [migration] =
+      Parser.parse([
+        fixtures("remove_two_columns_if_exists.exs")
+      ])
+
+    assert migration.remove_column == true
+  end
+
   defp fixtures(migration) do
     "test/fixtures/parser/#{migration}"
   end
