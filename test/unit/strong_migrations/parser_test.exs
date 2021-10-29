@@ -89,6 +89,24 @@ defmodule StrongMigrations.ParserTest do
     assert migration.drop_index_concurrently == true
   end
 
+  test "should find :rename_column option" do
+    [migration] =
+      Parser.parse([
+        fixtures("rename_column.exs")
+      ])
+
+    assert migration.rename_column == true
+  end
+
+  test "should find :rename_column option when two columns to change" do
+    [migration] =
+      Parser.parse([
+        fixtures("rename_two_columns.exs")
+      ])
+
+    assert migration.rename_column == true
+  end
+
   defp fixtures(migration) do
     "test/fixtures/parser/#{migration}"
   end

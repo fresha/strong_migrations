@@ -13,6 +13,7 @@ defmodule StrongMigrations.Migration do
     field(:drop_index, boolean(), default: false)
     field(:create_index_concurrently, boolean(), default: false)
     field(:drop_index_concurrently, boolean(), default: false)
+    field(:rename_column, boolean(), default: false)
     field(:safety_assured, [:atom], default: [])
   end
 

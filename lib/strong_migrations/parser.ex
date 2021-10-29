@@ -65,15 +65,24 @@ defmodule StrongMigrations.Parser do
     parse_body(tail, %{acc | drop_index: true})
   end
 
+  defp parse_body(
+         [
+           {:def, _,
+            [_, [do: {:rename, _, [{:table, _, [_table]}, _column_name, [to: _new_column_name]]}]]}
+           | tail
+         ],
+         acc
+       ) do
+    parse_body(tail, %{acc | rename_column: true})
+  end
+
   defp parse_body([{:def, _, [_, [do: {:__block__, _, opts}]]} | tail], acc) do
     acc = parse_complex_body(opts, acc)
 
     parse_body(tail, acc)
   end
 
-  defp parse_body([_head | tail], acc) do
-    parse_body(tail, acc)
-  end
+  defp parse_body([_head | tail], acc), do: parse_body(tail, acc)
 
   defp parse_body([], acc), do: acc
 
@@ -91,6 +100,13 @@ defmodule StrongMigrations.Parser do
 
   defp parse_complex_body([{:drop, _, [{:index, _, [_, _]}]} | tail], acc) do
     parse_complex_body(tail, %{acc | drop_index: true})
+  end
+
+  defp parse_complex_body(
+         [{:rename, _, [{:table, _, [_table]}, _column_name, [to: _new_column_name]]} | tail],
+         acc
+       ) do
+    parse_complex_body(tail, %{acc | rename_column: true})
   end
 
   defp parse_complex_body([_head | tail], acc), do: parse_complex_body(tail, acc)
