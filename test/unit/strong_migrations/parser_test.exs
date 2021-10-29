@@ -53,6 +53,34 @@ defmodule StrongMigrations.ParserTest do
     end
   end
 
+  test "should not find create index option when safety assured" do
+    [migration] =
+      Parser.parse([
+        fixtures("safety_assured_create_index.exs")
+      ])
+
+    assert migration.create_index == false
+  end
+
+  test "should not find create index option when safety assured many" do
+    [migration] =
+      Parser.parse([
+        fixtures("safety_assured_create_indexes.exs")
+      ])
+
+    assert migration.create_index == false
+  end
+
+  test "should not find create index option when safety assured but drop table was not assured" do
+    [migration] =
+      Parser.parse([
+        fixtures("safety_assured_one_of_two_opts.exs")
+      ])
+
+    assert migration.drop_table == true
+    assert migration.create_index == false
+  end
+
   test "should find :create_index option" do
     [migration] =
       Parser.parse([

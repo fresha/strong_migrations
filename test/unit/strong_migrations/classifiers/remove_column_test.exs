@@ -10,16 +10,6 @@ defmodule StrongMigrations.Classifiers.RemoveColumnTest do
     assert {:error, :remove_column_is_not_safety_assured} == RemoveColumn.classify(migration)
   end
 
-  test "it has passed when trying to remove a column, but it's safety assured" do
-    migration = %{
-      Migration.new("test.exs")
-      | remove_column: true,
-        safety_assured: [:remove_column]
-    }
-
-    assert :ok == RemoveColumn.classify(migration)
-  end
-
   test "it has passed when not remove a column" do
     migration = %{Migration.new("test.exs") | remove_column: false}
 
