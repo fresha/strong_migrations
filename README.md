@@ -19,6 +19,7 @@
 #### Features
 - checking if your migrations are adding an index concurrently in transaction
 - checking if your migrations are removing an index concurrently in transaction
+- checking if your migrations are renaming columns (it's always better to remove old and add new column)
 ... tbd
 
 ## How to install
