@@ -19,7 +19,9 @@ defmodule StrongMigrations.Loader do
   end
 
   defp get_migration_paths([]) do
-    Application.fetch_env!(:strong_migrations, :migration_paths)
+    Application.get_env(:strong_migrations, :migration_paths, [
+      "priv/repo/migrations"
+    ])
   end
 
   defp get_migration_paths(paths), do: paths

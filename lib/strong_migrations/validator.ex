@@ -22,6 +22,13 @@ defmodule StrongMigrations.Validator do
   end
 
   defp classifiers do
-    Application.fetch_env!(:strong_migrations, :classifiers)
+    Application.get_env(:strong_migrations, :classifiers, [
+      StrongMigrations.Classifiers.AddIndexConcurrentlyInTransaction,
+      StrongMigrations.Classifiers.AddIndexNotConcurrently,
+      StrongMigrations.Classifiers.DropIndexConcurrentlyInTransaction,
+      StrongMigrations.Classifiers.DropTable,
+      StrongMigrations.Classifiers.RemoveColumn,
+      StrongMigrations.Classifiers.RenameColumn
+    ])
   end
 end
