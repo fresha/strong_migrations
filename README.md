@@ -12,6 +12,7 @@
 ## Table of Contents
 * [What Is it?](#what-is-it)
 * [How to Install?](#how-to-install)
+* [How to configure?](#how-to-configure)
 
 ## What is it
 `strong_migrations` is a library that protects your application from invoking unsafe migrations, they needs to be marked as a safe.
@@ -36,4 +37,27 @@ def deps do
     {:strong_migrations, "~> 0.1", only: :dev}
   ]
 end
+```
+
+## How to configure
+If you want to specify which classifiers you want to use, please add to your `config.exs` folowwing lines
+```elixir
+config :strong_migrations,
+  classifiers: [
+    StrongMigrations.Classifiers.AddIndexConcurrentlyInTransaction,
+    StrongMigrations.Classifiers.AddIndexNotConcurrently,
+    StrongMigrations.Classifiers.DropIndexConcurrentlyInTransaction,
+    StrongMigrations.Classifiers.DropTable,
+    StrongMigrations.Classifiers.RemoveColumn,
+    StrongMigrations.Classifiers.RenameColumn
+  ]
+```
+
+If you want to specify migration paths available in your project (not default -> `priv/repo/migrations`), please add to your `config.exs` following lines
+```elixir
+config :strong_migrations,
+  migration_paths: [
+    "priv/repo/migrations"
+    "my/fancy/path/to/migrations"
+  ],
 ```
