@@ -10,16 +10,6 @@ defmodule StrongMigrations.Classifiers.RenameColumnTest do
     assert {:error, :rename_column_is_not_safe} == RenameColumn.classify(migration)
   end
 
-  test "it has passed when trying to rename a column, but it's safety assured" do
-    migration = %{
-      Migration.new("test.exs")
-      | rename_column: true,
-        safety_assured: [:rename_column]
-    }
-
-    assert :ok == RenameColumn.classify(migration)
-  end
-
   test "it has passed when not removing a column" do
     migration = %{Migration.new("test.exs") | rename_column: false}
 

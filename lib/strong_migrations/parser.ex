@@ -31,16 +31,16 @@ defmodule StrongMigrations.Parser do
 
   defp parse_body([{:use, _, _} | tail], acc), do: parse_body(tail, acc)
 
-  defp parse_body([{:@, _, [{:safety_assured, _, [operations]}]} | tail], acc) do
-    parse_body(tail, %{acc | safety_assured: operations})
-  end
-
   defp parse_body([{:@, _, [{:disable_ddl_transaction, _, [true]}]} | tail], acc) do
     parse_body(tail, %{acc | disable_ddl_transaction: true})
   end
 
   defp parse_body([{:@, _, [{:disable_migration_lock, _, [true]}]} | tail], acc) do
     parse_body(tail, %{acc | disable_migration_lock: true})
+  end
+
+  defp parse_body([{:def, _, [{_, _, _}, [do: {:safety_assured, _, _}]]} | tail], acc) do
+    parse_body(tail, acc)
   end
 
   defp parse_body(

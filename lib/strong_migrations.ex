@@ -30,4 +30,10 @@ defmodule StrongMigrations do
     |> Validator.validate()
     |> ReasonsTranslator.translate()
   end
+
+  defmacro safety_assured(do: expression) do
+    quote do
+      unquote(expression)
+    end
+  end
 end
