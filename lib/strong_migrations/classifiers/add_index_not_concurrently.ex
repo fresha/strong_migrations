@@ -6,7 +6,11 @@ defmodule StrongMigrations.Classifiers.AddIndexNotConcurrently do
   @behaviour Classifier
 
   @impl Classifier
-  def classify(%{create_index: true, create_index_concurrently: false, safety_assured: safety_assured}) do
+  def classify(%{
+        create_index: true,
+        create_index_concurrently: false,
+        safety_assured: safety_assured
+      }) do
     is_safe(:create_index in safety_assured)
   end
 

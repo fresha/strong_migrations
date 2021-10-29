@@ -51,6 +51,13 @@ defmodule StrongMigrations.Parser do
   end
 
   defp parse_body(
+         [{:def, _, [_, [do: {:create, _, [{:index, _, [_, _, opts]}]}]]} | tail],
+         acc
+       ) do
+    parse_body(tail, %{acc | create_index_concurrently: Keyword.get(opts, :concurrently, false)})
+  end
+
+  defp parse_body(
          [{:def, _, [_, [do: {:drop, _, [{:index, _, [_, _, [concurrently: true]]}]}]]} | tail],
          acc
        ) do
@@ -107,7 +114,9 @@ defmodule StrongMigrations.Parser do
     parse_body(tail, acc)
   end
 
-  defp parse_body([_head | tail], acc), do: parse_body(tail, acc)
+  defp parse_body([_head | tail], acc) do
+    parse_body(tail, acc)
+  end
 
   defp parse_body([], acc), do: acc
 
