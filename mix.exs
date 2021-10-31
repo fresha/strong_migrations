@@ -16,9 +16,9 @@ defmodule StrongMigrations.MixProject do
       docs: docs(),
       elixirc_paths: elixirc_paths(Mix.env()),
       dialyzer: [
+        plt_file: {:no_warn, "priv/plts/dialyzer.plt"},
         plt_add_deps: :apps_direct,
-        plt_add_apps: [:mix],
-        plt_ignore_apps: [:logger]
+        plt_add_apps: [:mix]
       ]
     ]
   end
