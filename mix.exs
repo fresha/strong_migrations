@@ -35,7 +35,7 @@ defmodule StrongMigrations.MixProject do
   defp deps do
     [
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
+      {:dialyxir, "~> 1.1", only: [:dev, :test], runtime: false},
       {:ex_doc, ">= 0.25.5", only: :dev, runtime: false},
       {:typed_struct, "~> 0.1"}
     ]
