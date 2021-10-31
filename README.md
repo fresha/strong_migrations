@@ -46,7 +46,7 @@ end
 ```
 
 ## How to configure
-If you want to specify which classifiers you want to use, please add to your `config.exs` folowwing lines
+If you want to specify which classifiers you want to use, please add to your `config.exs` following lines
 ```elixir
 config :strong_migrations,
   classifiers: [
