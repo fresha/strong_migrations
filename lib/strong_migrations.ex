@@ -22,7 +22,7 @@ defmodule StrongMigrations do
       :safe
 
   """
-  @spec analyze([migration_path()]) :: :safe | {:unsafe, [StrongMigrations.reason()]}
+  @spec analyze([migration_path()]) :: :safe | {:unsafe, [reason]}
   def analyze(migration_paths \\ []) do
     migration_paths
     |> Loader.load()
