@@ -8,7 +8,7 @@ defmodule StrongMigrations.Parser do
   @doc """
   Parses given migrations into a struct with information about the content
   """
-  @spec parse([StrongMigrations.migration_file()]) :: :ok
+  @spec parse([StrongMigrations.migration_file()]) :: list()
   def parse(migration_files) do
     migration_files
     |> Stream.map(&file_path_to_ast/1)

@@ -25,6 +25,8 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 strong_migrations-*.tar
 
-
 # Temporary files for e.g. tests
 /tmp
+
+/priv/plts/*.plt
+/priv/plts/*.plt.hash
