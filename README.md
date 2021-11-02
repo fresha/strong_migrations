@@ -64,6 +64,7 @@ If you want to specify migration paths available in your project (not default ->
 config :strong_migrations,
   migration_paths: [
     "priv/repo/migrations",
+    "apps/*/priv/repo/migrations",
     "my/fancy/path/to/migrations"
   ],
 ```

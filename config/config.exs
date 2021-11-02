@@ -7,6 +7,7 @@ use Mix.Config
 #     config :strong_migrations,
 #       migration_paths: [
 #         "priv/repo/migrations",
+#         "apps/*/priv/repo/migrations",
 #         "my/fancy/path/to/migrations"
 #       ],
 #       classifiers: [
