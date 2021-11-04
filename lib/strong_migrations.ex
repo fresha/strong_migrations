@@ -31,6 +31,13 @@ defmodule StrongMigrations do
     |> ReasonsTranslator.translate()
   end
 
+  defmacro __using__(_opts) do
+    quote do
+      use Ecto.Migration
+      import StrongMigrations
+    end
+  end
+
   defmacro safety_assured(do: expression) do
     quote do
       unquote(expression)
