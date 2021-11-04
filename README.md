@@ -21,6 +21,21 @@
 2. If migrations are unsafe -> print errors.
 3. If migrations are safe -> use `ecto.migrate`.
 
+You can also use a macro of `StrongMigrations` like `safety_assured` to be sure it's safe and you can run migrations with specific changes. Example
+```elixir
+defmodule SafetyAssuredCreateIndex do
+  @moduledoc false
+
+  use StrongMigrations
+
+  def change do
+    safety_assured do
+      create(index(:users, :email))
+    end
+  end
+end
+```
+
 ![](asset/img/example.png)
 
 #### Features
