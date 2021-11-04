@@ -23,14 +23,14 @@
 
 You can also use a macro of `StrongMigrations` like `safety_assured` to be sure it's safe and you can run migrations with specific changes. Example
 ```elixir
-defmodule SafetyAssuredCreateIndex do
+defmodule SafetyAssuredDropTable do
   @moduledoc false
 
   use StrongMigrations
 
   def change do
     safety_assured do
-      create(index(:users, :email))
+      drop(table(:users))
     end
   end
 end
