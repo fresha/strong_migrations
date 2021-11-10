@@ -59,6 +59,14 @@ def deps do
   ]
 end
 ```
+Optionally, you can add an alias:
+```elixir
+"ecto.migrate": "strong_migrations.migrate"
+```
+And, another option is to use `StrongMigrations` as a default for generated migrations. Just add following line to your `config.exs` file.
+```elixir
+config :ecto_sql, migration_module: Helpers.Migration
+```
 
 ## How to configure
 If you want to specify which classifiers you want to use, please add to your `config.exs` following lines
