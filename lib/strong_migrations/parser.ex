@@ -43,6 +43,10 @@ defmodule StrongMigrations.Parser do
     parse_body(tail, acc)
   end
 
+  defp parse_body([{:def, _, [{:down, _, _}, _]} | tail], acc) do
+    parse_body(tail, acc)
+  end
+
   defp parse_body(
          [{:def, _, [_, [do: {:create, _, [{:index, _, [_, _, [concurrently: true]]}]}]]} | tail],
          acc
