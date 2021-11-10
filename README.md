@@ -65,7 +65,7 @@ Optionally, you can add an alias:
 ```
 And, another option is to use `StrongMigrations` as a default for generated migrations. Just add following line to your `config.exs` file.
 ```elixir
-config :ecto_sql, migration_module: Helpers.Migration
+config :ecto_sql, migration_module: StrongMigrations
 ```
 
 ## How to configure
