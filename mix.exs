@@ -1,7 +1,7 @@
 defmodule StrongMigrations.MixProject do
   use Mix.Project
 
-  @source_url "https://github.com/patrykwozinski/strong_migrations"
+  @source_url "https://github.com/surgeventures/strong_migrations"
   @version "0.1.5"
 
   def project do
@@ -37,6 +37,7 @@ defmodule StrongMigrations.MixProject do
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.1", only: [:dev, :test], runtime: false},
       {:ex_doc, ">= 0.25.5", only: :dev, runtime: false},
+      {:junit_formatter, "~> 3.3", only: [:test]},
       {:typed_struct, "~> 0.1"}
     ]
   end
@@ -44,7 +45,6 @@ defmodule StrongMigrations.MixProject do
   defp docs do
     [
       extras: [
-        "HOW_TO_RELEASE.md": [title: "How to Release"],
         "LICENSE.md": [title: "License"],
         "README.md": [title: "Overview"]
       ],
