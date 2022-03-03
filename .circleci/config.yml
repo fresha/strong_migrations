@@ -1,13 +1,14 @@
 version: 2.1
 
 orbs:
-  elixir-orb: fresha/elixir-orb@0.0
+  elixir-orb: fresha/elixir-orb@0.2
 
 workflows:
   version: 2
   ci:
     jobs:
-      - elixir-orb/test
+      - elixir-orb/test:
+          context: Hex
       - elixir-orb/static-check:
           context: Hex
       - hold-for-dev-publish:
