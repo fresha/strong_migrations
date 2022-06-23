@@ -17,6 +17,7 @@ defmodule StrongMigrations.Migration do
     field(:remove_column, boolean(), default: false)
     field(:drop_table, boolean(), default: false)
     field(:safety_assured, [:atom], default: [])
+    field(:default_is_function, boolean(), default: false)
   end
 
   @spec new(String.t()) :: t()

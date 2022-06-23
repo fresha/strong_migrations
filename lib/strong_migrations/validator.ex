@@ -28,7 +28,8 @@ defmodule StrongMigrations.Validator do
       StrongMigrations.Classifiers.DropIndexConcurrentlyInTransaction,
       StrongMigrations.Classifiers.DropTable,
       StrongMigrations.Classifiers.RemoveColumn,
-      StrongMigrations.Classifiers.RenameColumn
+      StrongMigrations.Classifiers.RenameColumn,
+      StrongMigrations.Classifiers.DefaultIsFunction
     ])
   end
 end

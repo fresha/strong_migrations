@@ -254,6 +254,29 @@ defmodule StrongMigrations.ParserTest do
       assert migration.drop_table == true
       assert migration.remove_column == true
     end
+
+    test "should set :default_is_function if default is a function on change" do
+      assert [%{default_is_function: true}] =
+        Parser.parse([
+          fixtures("add_column_with_func_default.exs")
+        ])
+      assert [%{default_is_function: true}] =
+        Parser.parse([
+          fixtures("add_if_not_exists_column_with_func_default.exs")
+        ])
+      assert [%{default_is_function: true}] =
+        Parser.parse([
+          fixtures("modify_column_with_func_default.exs")
+        ])
+      assert [%{default_is_function: false}] =
+        Parser.parse([
+          fixtures("empty.exs")
+        ])
+      assert [%{default_is_function: false}] =
+        Parser.parse([
+          fixtures("create_with_column_with_func_default.exs")
+        ])
+    end
   end
 
   defp fixtures(migration) do
