@@ -2,7 +2,7 @@ defmodule StrongMigrations.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/surgeventures/strong_migrations"
-  @version "0.1.5"
+  @version "0.2.0"
 
   def project do
     [
