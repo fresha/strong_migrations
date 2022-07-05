@@ -16,5 +16,6 @@ use Mix.Config
 #         StrongMigrations.Classifiers.DropIndexConcurrentlyInTransaction,
 #         StrongMigrations.Classifiers.DropTable,
 #         StrongMigrations.Classifiers.RemoveColumn,
-#         StrongMigrations.Classifiers.RenameColumn
+#         StrongMigrations.Classifiers.RenameColumn,
+#         StrongMigrations.Classifiers.DefaultIsFunction
 #       ]
