@@ -111,3 +111,4 @@ config :strong_migrations,
 ## Similar Packages
 
 - https://github.com/ankane/strong_migrations (Ruby)
+- https://github.com/Artur-Sulej/excellent_migrations 
