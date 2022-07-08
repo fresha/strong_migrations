@@ -195,7 +195,8 @@ defmodule StrongMigrations.Parser do
     parse_complex_body(tail, %{acc | remove_column: true})
   end
 
-  defp parse_complex_body([[do: {method, _, [_col_name, _col_type, col_opts]}] | tail], acc) when method in [:add, :add_if_not_exists, :modify] do
+  defp parse_complex_body([[do: {method, _, [_col_name, _col_type, col_opts]}] | tail], acc)
+       when method in [:add, :add_if_not_exists, :modify] do
     default_is_function = default_is_function?(col_opts)
     parse_complex_body(tail, %{acc | default_is_function: default_is_function})
   end
