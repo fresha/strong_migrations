@@ -256,6 +256,16 @@ defmodule StrongMigrations.ParserTest do
     end
 
     test "should set :default_is_function if default is a function on change" do
+      # Following documentation:
+      #
+      # https://www.postgresql.org/docs/current/sql-altertable.html#Notes
+      #
+      # > Adding a column with a volatile DEFAULT or changing the type
+      # > of an existing column will require the entire table and its
+      # > indexes to be rewritten. [...] Table and/or index rebuilds
+      # > may take a significant amount of time for a large table; and
+      # > will temporarily require as much as double the disk space.
+
       assert [%{default_is_function: true}] =
                Parser.parse([
                  fixtures("add_column_with_func_default.exs")
@@ -280,10 +290,27 @@ defmodule StrongMigrations.ParserTest do
                Parser.parse([
                  fixtures("empty.exs")
                ])
+    end
+
+    test "default as function in newly created column is safe" do
+      # This is safe because there are no preexisting rows that should
+      # be filled.
 
       assert [%{default_is_function: false}] =
                Parser.parse([
                  fixtures("create_with_column_with_func_default.exs")
+               ])
+    end
+
+    test "default as value in added column is safe" do
+      # > When a column is added with ADD COLUMN and a non-volatile
+      # > DEFAULT is specified, the default is evaluated at the time
+      # > of the statement and the result stored in the table's
+      # > metadata. That value will be used for the column for all
+      # > existing rows.
+      assert [%{default_is_function: false}] =
+               Parser.parse([
+                 fixtures("add_column_with_default_value.exs")
                ])
     end
   end
