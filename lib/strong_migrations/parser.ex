@@ -234,7 +234,7 @@ defmodule StrongMigrations.Parser do
       {:ok, {:fragment, [_line_num], [default_value]}} ->
         default_value
         |> String.trim()
-        |> String.ends_with?("()")
+        |> String.ends_with?(")")
 
       _ ->
         false

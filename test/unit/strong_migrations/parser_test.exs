@@ -271,6 +271,11 @@ defmodule StrongMigrations.ParserTest do
                  fixtures("modify_column_with_func_default.exs")
                ])
 
+      assert [%{default_is_function: true}] =
+               Parser.parse([
+                 fixtures("add_column_with_sequential_default.exs")
+               ])
+
       assert [%{default_is_function: false}] =
                Parser.parse([
                  fixtures("empty.exs")
