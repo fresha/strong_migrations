@@ -231,8 +231,13 @@ defmodule StrongMigrations.Parser do
 
   def default_is_function?(opts) do
     case Keyword.fetch(opts, :default) do
-      {:ok, {:fragment, [_line_num], [default_value]}} -> String.ends_with?(default_value, "()")
-      _ -> false
+      {:ok, {:fragment, [_line_num], [default_value]}} ->
+        default_value
+        |> String.trim()
+        |> String.contains?(")")
+
+      _ ->
+        false
     end
   end
 end

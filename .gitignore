@@ -30,3 +30,7 @@ strong_migrations-*.tar
 
 /priv/plts/*.plt
 /priv/plts/*.plt.hash
+
+
+# emacs temp files
+*.*~
