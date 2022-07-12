@@ -1,6 +1,6 @@
 # This file is responsible for configuring your application
 # and its dependencies with the aid of the Mix.Config module.
-use Mix.Config
+import Config
 
 # Sample configuration:
 #
@@ -16,5 +16,6 @@ use Mix.Config
 #         StrongMigrations.Classifiers.DropIndexConcurrentlyInTransaction,
 #         StrongMigrations.Classifiers.DropTable,
 #         StrongMigrations.Classifiers.RemoveColumn,
-#         StrongMigrations.Classifiers.RenameColumn
+#         StrongMigrations.Classifiers.RenameColumn,
+#         StrongMigrations.Classifiers.DefaultIsFunction
 #       ]

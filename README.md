@@ -51,6 +51,7 @@ end
 - checking if your migrations are removing columns
 - checking if your migrations are removing tables
 - mark `safety assured do: drop table(:posts)` or multiline when you're sure it's safe
+- check if default is a function when altering a table
   ... tbd
 
 ## How to install
@@ -91,7 +92,8 @@ config :strong_migrations,
     StrongMigrations.Classifiers.DropIndexConcurrentlyInTransaction,
     StrongMigrations.Classifiers.DropTable,
     StrongMigrations.Classifiers.RemoveColumn,
-    StrongMigrations.Classifiers.RenameColumn
+    StrongMigrations.Classifiers.RenameColumn,
+    StrongMigrations.Classifiers.DefaultIsFunction
   ]
 ```
 
@@ -109,3 +111,4 @@ config :strong_migrations,
 ## Similar Packages
 
 - https://github.com/ankane/strong_migrations (Ruby)
+- https://github.com/Artur-Sulej/excellent_migrations 
