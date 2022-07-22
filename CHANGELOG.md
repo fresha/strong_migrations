@@ -6,11 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
 
-## [Unreleased]
+## [0.2.0]
 
 ### Changed
 
-- Moved to the Fresha organization 
+- Moved to the Fresha organization
 
 ### Fixed
 
@@ -18,8 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- Changelog
-- Security.md
+- Checking for default values being function calls (https://github.com/fresha/strong_migrations/pull/11)
+- CHANGELOG.md
+- SECURITY.md
 
 ## [0.1.5] - 2021-11-11
 
