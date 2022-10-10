@@ -8,9 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+
+## [0.2.0] - 2022-07-12
+
 ### Changed
 
-- Moved to the Fresha organization 
+- Moved to the Fresha organization
 
 ### Fixed
 
@@ -18,8 +21,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- Changelog
-- Security.md
+- Checking for default values being function calls (https://github.com/fresha/strong_migrations/pull/11)
+- CHANGELOG.md
+- SECURITY.md
 
 ## [0.1.5] - 2021-11-11
 
@@ -68,7 +72,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 
 <!-- links -->
-[Unreleased]: https://github.com/fresha/strong_migrations/compare/v0.1.5...HEAD
+[Unreleased]: https://github.com/fresha/strong_migrations/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/fresha/strong_migrations/compare/v0.1.5...v0.2.0
 [0.1.5]: https://github.com/fresha/strong_migrations/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/fresha/strong_migrations/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/fresha/strong_migrations/compare/v0.1.2...v0.1.3
